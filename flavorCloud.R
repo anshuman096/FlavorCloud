@@ -45,8 +45,7 @@ for (review in aff_reviews) {
 
 phrases_df = tibble(line = 1:length(phrases), text = phrases)
 aff_freq = data.frame(table(unlist(strsplit(tolower(phrases_df$text), " "))))
-colnames(aff_freq) = c("word", "freq")
-write.csv(aff_freq, 'aff_reviews_wordcount.csv')
+colnames(aff_freq) = c("word", "freq")s
 
 
 
@@ -109,7 +108,6 @@ for (review in exp_reviews) {
 phrases_df = tibble(line = 1:length(phrases), text = phrases)
 exp_freq = data.frame(table(unlist(strsplit(tolower(phrases_df$text), " "))))
 colnames(exp_freq) = c("word", "freq")
-write.csv(exp_freq, 'exp_reviews_wordcount.csv')
 
 
 exp_freq = exp_freq[exp_freq$freq > 25 & 
