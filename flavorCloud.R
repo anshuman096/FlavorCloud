@@ -8,7 +8,9 @@ suppressPackageStartupMessages(library(wordcloud2))
 
 
 clean_Corpus <- function(corpus) {
-    wine_stopwords = c(data_stopwords_smart$en, 'wine', 'palate', 'finish', 'drink', 'notes', 'nose')
+    wine_stopwords = c(data_stopwords_smart$en, 'wine', 
+                       'palate', 'finish', 'drink', 'notes', 
+                       'nose', 'flavors', 'tannins', 'fruit', 'aromas')
     corpus = tm_map(corpus, content_transformer(replace_contraction))
     print('replaced contractions')
     corpus = tm_map(corpus, removePunctuation)
