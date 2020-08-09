@@ -17,4 +17,11 @@ Affordable Wines           |  Expensive Wines
 ![](./affordableR.jpeg)    |  ![](./expensiveR.jpeg)
 
 
-* The `Img Masks` folder contains jpeg masks that can be used to give shape to the word cloud - for a more visually appealing final product!
+## Custom Shaped Clouds
+
+The `Img Masks` folder contains jpeg masks that can be used to give shape to the word cloud - for a more visually appealing final product!
+
+### Gallery
+
+![Wine Bottle](./Gallery/wineBottle.jpeg)
+![Goblet](./Gallery/goblet.jpeg)
