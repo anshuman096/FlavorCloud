@@ -21,6 +21,16 @@ clean_Corpus <- function(corpus) {
     return(corpus)
 }
 
+analyze_text <- function(reviews) {
+    corpora = VCorpus(VectorSource(reviews))
+    corpora = clean_Corpus(corpora)
+    
+    textDF = sort(rowSums(as.matrix(TermDocumentMatrix(corpora))), decreasing = TRUE)
+    textDF = data.frame(word = names(textDF), freq = textDF)
+    rownames(textDF) = NULL
+    return(textDF)
+}
+
 
 wines = read.csv('./winemag-data-130k-v2.csv')
 
@@ -35,15 +45,7 @@ exp_reviews = top_expensive[sample(nrow(top_expensive), 1000), ]$description
 
 
 # Affordable Wines NLP
-
-aff_corpus = VCorpus(VectorSource(aff_reviews))
-aff_corpus = clean_Corpus(aff_corpus)
-
-affTDM = TermDocumentMatrix(aff_corpus)
-affTDMm = as.matrix(affTDM)
-affTDMv = sort(rowSums(affTDMm), decreasing = TRUE)
-affDF = data.frame(word = names(affTDMv), freq = affTDMv)
-rownames(affDF) = NULL
+affDF = analyze_text(aff_reviews)
 
 colors = c('#F4D166', '#F7BF5A', '#F8AD4E', '#F69C3F', '#F38C30', 
            '#F17921', '#E8691D', '#DD5C1F', '#D05022', '#C14823', '#AF4123', '#9E3A26')
@@ -56,15 +58,7 @@ aff_plot = wordcloud2(affDF, fontFamily = 'Avenir',
 
 
 # Expensive Wines NLP
-
-exp_corpus = VCorpus(VectorSource(exp_reviews))
-exp_corpus = clean_Corpus(exp_corpus)
-
-expTDM = TermDocumentMatrix(exp_corpus)
-expTDMm = as.matrix(expTDM)
-expTDMv = sort(rowSums(expTDMm), decreasing = TRUE)
-expDF = data.frame(word = names(expTDMv), freq = expTDMv)
-rownames(expDF) = NULL
+expDF = analyze_text(exp_reviews)
 
 colors = c('#F4D166', '#F7BF5A', '#F8AD4E', '#F69C3F', '#F38C30', 
            '#F17921', '#E8691D', '#DD5C1F', '#D05022', '#C14823', '#AF4123', '#9E3A26')
