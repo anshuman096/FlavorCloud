@@ -8,11 +8,13 @@ suppressPackageStartupMessages(library(wordcloud2))
 
 
 clean_Corpus <- function(corpus) {
-    wine_stopwords = c(data_stopwords_smart$en, 'wine', 'palate', 'finish', 'drink')
+    wine_stopwords = c(data_stopwords_smart$en, 'wine', 'palate', 'finish', 'drink', 'notes')
     corpus = tm_map(corpus, content_transformer(replace_contraction))
     print('replaced contractions')
     corpus = tm_map(corpus, removePunctuation)
     print('removed punctuation')
+    corpus = tm_map(corpus, removeNumbers)
+    print('removed numbers')
     corpus = tm_map(corpus, content_transformer(tolower))
     print('changed to lower case')
     corpus = tm_map(corpus, removeWords, wine_stopwords)
