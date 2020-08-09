@@ -47,8 +47,8 @@ exp_reviews = top_expensive[sample(nrow(top_expensive), 1000), ]$description
 # Affordable Wines NLP
 affDF = analyze_text(aff_reviews)
 
-colors = c('#F4D166', '#F7BF5A', '#F8AD4E', '#F69C3F', '#F38C30', 
-           '#F17921', '#E8691D', '#DD5C1F', '#D05022', '#C14823', '#AF4123', '#9E3A26')
+colors = c('#E6E6FA', '#D8BFD8', '#DDA0DD', '#EE82EE', '#DA70D6', 
+           '#BA55D3', '#9370DB', '#8A2BE2', '#9400D3', '#9932CC', '#800080', '#4B0082')
 
 aff_plot = wordcloud2(affDF, fontFamily = 'Avenir', 
                       color = rep_len(colors, length.out = nrow(affDF)),
